@@ -39,7 +39,7 @@ const maanRoutes = require("./routes/maan")
 
 
 //apiDocs
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   fs.readFile("docs/apiDocs.json", (err, data) =>{
     if(err) {
       res.status(400).json ({
@@ -58,9 +58,9 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
-app.use("/", postRoutes);
-app.use("/", authRoutes);
-app.use("/", userRoutes);
+app.use("/api", postRoutes);
+app.use("/api", authRoutes);
+app.use("/api", userRoutes);
 app.use("/getMaan", maanRoutes);
 app.use("/postMaan", maanRoutes);
 
